@@ -1,1 +1,1003 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-B+KlzeuxjPBNuU3HVU7qudlbYRJWoMJu0vPQCZHQ1hY=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js; script-src-attr 'none'; style-src 'sha256-EJnwqR2cXKEuXU8Tb8RNK75t0sB32cfMtvdHoPv8U78=' https://fonts.googleapis.com; style-src-attr 'none'; font-src https://fonts.gstatic.com; img-src 'self' https:; connect-src https://qznennnijjalbyzktcii.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; manifest-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+<title>index.html</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b10;--panel:#10151d;--panel2:#151b24;--line:#27303d;--muted:#8d99aa;--text:#f3f6fa;--accent:#ffcf33;--accent2:#ff7a18}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 75% -10%,#263246 0,transparent 32%),var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:linear-gradient(45deg,#fff 1px,transparent 1px);background-size:7px 7px}
+a{color:inherit;text-decoration:none}.nav{height:72px;border-bottom:1px solid var(--line);background:#090c12e8;backdrop-filter:blur(14px);display:flex;align-items:center;padding:0 5vw;position:sticky;top:0;z-index:20}
+.logo{font-family:Oswald;font-size:25px;letter-spacing:.5px}.logo span{color:var(--accent)}.navlinks{display:flex;gap:28px;margin-left:auto;font-size:13px;font-weight:700;color:#aeb8c6}.navlinks a:first-child{color:#fff}
+.container{width:min(1180px,90%);margin:auto}.hero{padding:72px 0 45px;position:relative}.eyebrow{font-size:12px;color:var(--accent);font-weight:900;letter-spacing:2px;text-transform:uppercase}.hero h1{font-family:Oswald;font-size:clamp(48px,8vw,88px);line-height:.92;margin:12px 0;max-width:850px;text-transform:uppercase}.hero p{max-width:680px;color:#a9b3c1;line-height:1.7;font-size:15px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #394352;background:#121822;padding:8px 12px;border-radius:5px;font-size:11px;font-weight:800}.dot{width:7px;height:7px;border-radius:50%;background:#3de06f;box-shadow:0 0 12px #3de06f}
+.section-title{display:flex;align-items:end;justify-content:space-between;margin:38px 0 16px}.section-title h2{font-family:Oswald;text-transform:uppercase;font-size:34px;margin:0}.section-title p{color:var(--muted);font-size:12px;margin:0}
+.pulse{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px}.card{background:linear-gradient(145deg,#141a23,#0e131a);border:1px solid var(--line);border-radius:8px;padding:22px;min-height:150px}.card .label{font-size:10px;font-weight:900;color:var(--muted);letter-spacing:1.4px;text-transform:uppercase}.playername{font-family:Oswald;font-size:30px;text-transform:uppercase;margin:7px 0}.main{font-size:12px;color:#b6c0cc}.pr{font-family:Oswald;font-size:42px;color:var(--accent);line-height:1}.card.big{
+  position:relative;
+  overflow:hidden;
+  background-size:cover;
+  background-position:center;
+}
 
+.card.big:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(8,11,16,.78);
+  z-index:0;
+}
+
+.card.big:after{
+  content:"#1";
+  position:absolute;
+  right:15px;
+  bottom:-18px;
+  font:900 110px Oswald;
+  color:#fff;
+  opacity:.035;
+  z-index:1;
+}
+
+.card.big>*{
+  position:relative;
+  z-index:2;
+}
+.filters{display:grid;grid-template-columns:1fr 180px 180px;gap:10px;margin:15px 0}.input,.select{width:100%;padding:13px 14px;background:#0c1118;border:1px solid var(--line);color:#fff;border-radius:6px;outline:none}.input:focus,.select:focus{border-color:#56657a}
+.table{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:#0d1219}.thead,.row{display:grid;grid-template-columns:75px 2.1fr 1fr 105px 90px 90px;align-items:center}.thead{padding:12px 18px;color:#748093;font-size:10px;font-weight:900;text-transform:uppercase;letter-spacing:1px;background:#121821}.row{padding:17px 18px;border-top:1px solid #202833;transition:.15s}.row:hover{background:#141b24}.rank{font:700 25px Oswald;color:#8793a4}.rank.top{color:var(--accent)}.p{display:flex;align-items:center;gap:13px}.avatar{width:50px;height:50px;border-radius:5px;background:linear-gradient(135deg,#313d4d,#171d26);display:grid;place-items:center;overflow:hidden;font:800 15px Oswald;color:#dce3eb}.avatar img{width:100%;height:100%;object-fit:cover;display:block}.empty-avatar{width:100%;height:100%;display:block;background:#202733}.namewrap{min-width:170px}.name{font-weight:800;font-size:14px}.sub{font-size:10px;color:#7e8999;margin-top:3px}.avgstats{display:flex;gap:13px;margin-top:7px}.avgstat{font-size:9px;color:#718092;text-transform:uppercase;font-weight:800;white-space:nowrap}.avgstat b{color:#c1cad5;font:600 14px Oswald;margin-left:3px}.region{font-size:11px;color:#aeb8c6}.stat{font-family:Oswald;font-size:20px}.gold{color:var(--accent)}button{font:inherit}.view{background:#1a222e;color:#e9eef5;border:1px solid #303a49;padding:8px 10px;border-radius:4px;font-size:10px;font-weight:800;cursor:pointer}.view:hover{border-color:#69788d}
+.info{margin:40px 0 70px;display:grid;grid-template-columns:1.2fr 1fr;gap:14px}.info .card{min-height:0}.info h3{font-family:Oswald;text-transform:uppercase;font-size:24px;margin:0 0 10px}.info p{font-size:13px;color:#9da8b7;line-height:1.7;margin:0}.rules{padding-left:18px;color:#aab4c2;font-size:13px;line-height:2}
+.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.show{display:flex}.modalbox{width:min(560px,100%);background:#111720;border:1px solid #3a4656;border-radius:9px;padding:25px;box-shadow:0 25px 80px #000}.close{float:right;background:none;border:0;color:#aab4c2;font-size:24px;cursor:pointer}.profiletop{display:flex;gap:15px;align-items:center}.profiletop .avatar{width:60px;height:60px;font-size:22px}.profiletop h2{font-family:Oswald;text-transform:uppercase;margin:0;font-size:34px}.profilegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:22px}.mini{background:#0b1017;border:1px solid var(--line);padding:14px;border-radius:5px}.mini b{display:block;font:28px Oswald;color:var(--accent)}.mini span{font-size:9px;color:#8490a0;text-transform:uppercase;font-weight:800}
+footer{border-top:1px solid var(--line);padding:25px 0;color:#697586;font-size:11px}
+@media(max-width:800px){.navlinks{display:none}.pulse,.info{grid-template-columns:1fr}.filters{grid-template-columns:1fr}.thead{display:none}.row{grid-template-columns:45px 1fr auto;padding:14px}.row>*:nth-child(3),.row>*:nth-child(4),.row>*:nth-child(5){display:none}.hero{padding-top:48px}.section-title{display:block}.section-title p{margin-top:5px}}
+
+.spaced-eyebrow{margin-top:25px}
+.hero-card-one{background-image:url('https://myheroui.com/assets/cutins/chara_l_1208001_00.webp')}
+.hero-card-two{background-image:url('https://myheroui.com/assets/cutins/chara_l_1191001_00.webp')}
+.hero-card-three{background-image:url('https://myheroui.com/assets/cutins/chara_l_1141006_00.webp')}
+.pulse .card.big:nth-child(1):after{content:"#1"}
+.pulse .card.big:nth-child(2):after{content:"#2"}
+.pulse .card.big:nth-child(3):after{content:"#3"}
+.db-status{color:#aeb8c6;font-size:12px;margin:10px 0}
+.state-message{padding:25px;color:#8894a5}
+.state-message.warning{color:#e7c56b}
+.state-message.error{color:#f0a5a5}
+</style>
+</head>
+<body>
+<header class="nav">
+  <div class="logo">BR <span>ULTRA</span> RUMBLE</div>
+  <nav class="navlinks"><a href="#ranking">RANKINGS</a><a href="#ranking">PLAYERS</a><a href="#about">SOBRE</a></nav>
+</header>
+
+<main>
+<section class="hero container">
+  <span class="badge"><i class="dot"></i> RANKING BRASILEIRO · 2026</span>
+  <div class="eyebrow spaced-eyebrow">MY HERO ULTRA RUMBLE</div>
+  <h1>Seu desempenho<br>fala por você</h1>
+  <p>Um ranking comunitário focado exclusivamente na cena brasileira de My Hero Ultra Rumble. Acompanhe jogadores, desempenho e evolução competitiva em um só lugar.</p>
+</section>
+
+<section class="container" id="ranking">
+<div class="section-title"><div><div class="eyebrow">POWER RANK PULSE</div><h2>Os melhores jogadores do Brasil</h2></div></div>
+<div class="pulse">
+  <div class="card big hero-card-one"><div class="label">#1 jogador</div><div class="playername" id="heroName">CaioKendo</div><div class="main">Gentle Criminal · Brasil</div><div class="pr" id="heroPR">96.6</div></div> 
+  <div class="card big hero-card-two"><div class="label">#2 jogador</div><div class="playername">Yumii</div><div class="main">Mr. Compress</div><div class="pr">85.8</div></div>
+  <div class="card big hero-card-three"><div class="label">#3 jogador</div><div class="playername">Dan</div><div class="main">Mirio</div><div class="pr">76.2</div></div>
+</div>
+
+<div class="section-title"><div><div class="eyebrow">LEADERBOARD</div><h2>Power Rankings</h2></div></div>
+<div class="filters">
+  <input class="input" id="search" maxlength="120" autocomplete="off" placeholder="Pesquisar jogador ou main..." aria-label="Pesquisar jogador ou personagem">
+  <select class="select" id="character" aria-label="Filtrar por personagem"><option value="">Todos os personagens</option></select>
+  <select class="select" id="sort"><option value="rank">Ranking</option><option value="pr">Power Rank</option><option value="wins">Vitórias</option><option value="kos">KOs</option></select>
+</div>
+<div id="dbStatus" class="db-status" role="status" aria-live="polite">Conectando ao banco de dados…</div>
+<div class="table">
+  <div class="thead"><div>#</div><div>Jogador · médias em torneios</div><div>Main</div><div>Power Rank</div><div>Vitórias em torneios</div><div></div></div>  <div id="rows"></div>
+</div>
+</section>
+
+<section class="container info" id="about">
+<div class="card"><h3>Como funciona</h3><p>O PR usa os dados individuais de cada jogador e não muda conforme os números dos concorrentes. O critério de dano cresce linearmente, sem teto; por isso o PR é uma pontuação ponderada, não uma porcentagem limitada a 100.</p></div>
+<div class="card"><h3>Critérios</h3><ul class="rules"><li>Vitórias em torneios: 30%</li><li>K.O médio: 25%</li><li>Dano médio: 20% (linear, sem teto; cada 100 de dano médio = 1 ponto no critério)</li><li>Colocação média: 10%</li><li>Vitórias em partidas: 15%</li></ul></div>
+</section>
+</main>
+
+<footer><div class="container">BR Ultra Rumble · Projeto comunitário não afiliado à Bandai Namco ou à Byking.</div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="profileTitle"><div class="modalbox"><button class="close" id="closeModalButton" type="button" aria-label="Fechar perfil">×</button><div id="modalContent"></div></div></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" referrerpolicy="no-referrer"></script>
+<script>
+// Configure com a chave PUBLICÁVEL do Supabase. Nunca use service_role/secret key no navegador.
+const SUPABASE_URL = "https://qznennnijjalbyzktcii.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_i3HDolPQnQaxUrHxxa2iuQ_7rmh9yYl";
+let supabaseClient = null;
+
+// Imagens de jogadores podem vir de diferentes provedores. Aceita apenas HTTPS,
+// sem credenciais embutidas e sem portas alternativas; a CSP também limita a HTTPS.
+
+const MAIN_ALIASES = new Map([
+  ["mirio rapid", "Mirio Togata"],
+  ["mirio togata", "Mirio Togata"],
+  ["todoroki rapid", "Shoto Todoroki"],
+  ["shoto todoroki", "Shoto Todoroki"],
+  ["kirishima striker", "Eijiro Kirishima"],
+  ["eijiro kirishima", "Eijiro Kirishima"],
+  ["monoma technical", "Neito Monoma"],
+  ["neito monoma", "Neito Monoma"],
+  ["shigaraki striker", "Tomura Shigaraki"],
+  ["shigaraki technical", "Tomura Shigaraki"],
+  ["tomura shigaraki", "Tomura Shigaraki"],
+  ["dabi technical", "Dabi"],
+  ["dabi", "Dabi"]
+]);
+
+function normalizeMain(value) {
+  const original = typeof value === "string" ? value.trim().replace(/\s+/g, " ") : "";
+  return MAIN_ALIASES.get(original.toLocaleLowerCase("pt-BR")) || original;
+}
+
+function finiteNumber(value, fallback = 0) {
+  const number = typeof value === "number" ? value : Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function getSupabaseClient() {
+  if (!window.supabase || typeof window.supabase.createClient !== "function") {
+    throw new Error("A biblioteca Supabase não foi carregada.");
+  }
+  if (!supabaseClient) {
+    supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    });
+  }
+  return supabaseClient;
+}
+
+function makeElement(tagName, className = "", text = undefined) {
+  const element = document.createElement(tagName);
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = String(text);
+  return element;
+}
+
+function setRowsMessage(message, variant = "") {
+  const element = makeElement("div", `state-message${variant ? ` ${variant}` : ""}`, message);
+  rows.replaceChildren(element);
+}
+
+const localMetadata=[
+{name:"CaioKendo",main:"Gentle Criminal",region:"Brasil",image:"https://i.pinimg.com/236x/b8/65/00/b86500a353fb335d49b17fbea5b50c47.jpg",tournaments:[
+{
+    name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:true,
+
+    matches:[
+        {place:2,kos:4,dmg:9782},
+        {place:1,kos:8,dmg:11003},
+        {place:3,kos:3,dmg:6612},
+        {place:2,kos:2,dmg:1049},
+        {place:1,kos:6,dmg:6809}
+    ]
+}
+]},
+
+{name:"Yumii",main:"Mr. Compress",region:"Brasil",image:"https://i.pinimg.com/474x/aa/c4/83/aac483d119db64c062f568686b909a9c.jpg",tournaments:[
+{
+    name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:true,
+    matches:[
+        {place:2,kos:3,dmg:7325}, 
+        {place:1,kos:5,dmg:5660},
+        {place:3,kos:3,dmg:7407},
+        {place:2,kos:1,dmg:4000},
+        {place:1,kos:1,dmg:6042}
+    ]
+}
+]},
+
+{name:"Adriel",main:"Mr. Compress",region:"Brasil",image:"https://i.pinimg.com/originals/38/64/e3/3864e3845999f8f5aa2388007ad69966.png",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:4,kos:3,dmg:5037},
+        {place:3,kos:0,dmg:4260},
+        {place:1,kos:2,dmg:7535},
+        {place:3,kos:5,dmg:6673},
+        {place:3,kos:0,dmg:5797}
+    ]
+    }
+]},
+
+{name:"Reinhard",main:"Shoto Todoroki",region:"Brasil",image:"https://i.pinimg.com/736x/db/ba/45/dbba45dce5830409faf8434bc7f414b9.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:4,kos:0,dmg:5439},
+        {place:3,kos:3,dmg:3102},
+        {place:1,kos:5,dmg:6616},
+        {place:3,kos:4,dmg:5087},
+        {place:3,kos:0,dmg:3198}  
+    ]
+    }
+]},
+{name:"Redtick",main:"Tsuyu Asui",region:"Brasil",image:"https://i.pinimg.com/736x/32/0e/fd/320efd92fc25f09ba8b8284fbc30efcb.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:4,kos:1,dmg:1459},
+        {place:3,kos:0,dmg:936},
+        {place:1,kos:3,dmg:4997},
+        {place:3,kos:1,dmg:3457},
+        {place:3,kos:3,dmg:2288}
+    ]
+    }
+]},
+
+{name:"Yok",main:"Ochaco Uraraka",region:"Brasil",image:"https://i.pinimg.com/736x/d0/de/be/d0debe36555da9f892a6c8a8862ea89f.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:7,kos:0,dmg:202},
+        {place:7,kos:0,dmg:649},
+        {place:5,kos:0,dmg:477},
+        {place:6,kos:0,dmg:305},
+        {place:7,kos:0,dmg:62}
+    ]
+    }
+]},
+
+{name:"Lilione",main:"Mirko",region:"Brasil",image:"https://i.pinimg.com/564x/7c/dc/61/7cdc61864b2c6d67a766aba518a9bfb8.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:7,kos:0,dmg:665},
+        {place:7,kos:0,dmg:325},
+        {place:5,kos:0,dmg:186},
+        {place:7,kos:0,dmg:0}
+    ]
+    }
+]},
+
+{name:"Mounin",main:"Shota Aizawa",region:"Brasil",image:"https://i.pinimg.com/474x/ca/7d/61/ca7d61a0df6fddf3545ef07b3a170ddc.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:1,kos:2,dmg:3589},
+        {place:2,kos:2,dmg:3083},
+        {place:4,kos:4,dmg:5227},
+        {place:4,kos:0,dmg:2974},
+        {place:2,kos:0,dmg:2611}
+    ]
+    }
+]},
+
+{
+    name:"lizdeluzx",
+    main:"Tsuyu Asui",
+    region:"Brasil",
+    image:"https://i.pinimg.com/736x/dd/f3/ec/ddf3ecffe2da40a16141d042b467155c.jpg",
+    tournaments:[
+        {
+            name:"Torneio #1",
+            fieldSize:24,
+            tournamentWin:false,
+            matches:[
+                {place:7,kos:0,dmg:109},
+                {place:7,kos:1,dmg:940},
+                {place:5,kos:0,dmg:447},
+                {place:6,kos:0,dmg:809},
+                {place:7,kos:0,dmg:0}
+            ]
+        }
+    ]
+},
+
+{name:"| Ω | Loras",main:"Tsuyu Asui",region:"Brasil",image:"https://i.pinimg.com/474x/63/e8/07/63e80741ab62a6bc5e971dd99f502b2f.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:1,kos:6,dmg:6917},
+        {place:2,kos:3,dmg:7160},
+        {place:4,kos:1,dmg:5350},
+        {place:4,kos:3,dmg:3362},
+        {place:2,kos:3,dmg:5230}
+    ]
+    }
+]},
+
+{name:"Kakishi",main:"Tenya Iida",region:"Brasil",image:"https://i.pinimg.com/564x/85/6e/c8/856ec82fa2381d5c770f844039439e3f.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:1,kos:2,dmg:4278},
+        {place:2,kos:2,dmg:3515},
+        {place:4,kos:1,dmg:3316},
+        {place:4,kos:1,dmg:2159},
+        {place:2,kos:3,dmg:2977}
+    ]
+    }
+]},
+
+{name:"Elisiel",main:"Itsuka Kendo",region:"Brasil",image:"https://cdn.rafled.com/anime-icons/images/d0957d5de3127206677900be2e9d7554d4aae5d266f5b98a7d74449423fc1b27.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:3,kos:2,dmg:4510},
+        {place:5,kos:3,dmg:3012},
+        {place:2,kos:1,dmg:4989},
+        {place:1,kos:6,dmg:7158},
+        {place:4,kos:3,dmg:7197}
+    ]
+    }
+]},
+
+{name:"Pemdas",main:"All Might",region:"Brasil",image:"https://i.pinimg.com/736x/f9/a6/94/f9a694548380760a5402b8889803e58d.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:3,kos:3,dmg:5203},
+        {place:5,kos:1,dmg:3592},
+        {place:2,kos:1,dmg:1756},
+        {place:1,kos:0,dmg:3289},
+        {place:4,kos:4,dmg:6121}
+    ]
+    }
+]},
+
+{name:"Duzzin",main:"Fumigake Tokoyami",region:"Brasil",image:"https://i.pinimg.com/736x/da/d2/2c/dad22c72b15ea14eb3d282a58599a8e0.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:3,kos:2,dmg:5428},
+        {place:5,kos:0,dmg:5007},
+        {place:2,kos:3,dmg:6021},
+        {place:1,kos:4,dmg:7612},
+        {place:4,kos:3,dmg:7248}
+    ]
+    }
+]},
+
+{name:"Kazui",main:"Mirio Togata",region:"Brasil",image:"https://i.pinimg.com/564x/a1/e2/03/a1e203903ff92353a1154409ac171254.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:5,kos:1,dmg:3217},
+        {place:4,kos:0,dmg:1043},
+        {place:6,kos:0,dmg:2052}
+    ]
+    }
+]},
+
+{name:"Wes",main:"Hawks",region:"Brasil",image:"https://i.pinimg.com/736x/87/1f/e7/871fe71a2e30c0c5495009fcb3119c9e.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:5,kos:0,dmg:2459},
+        {place:4,kos:0,dmg:1801},
+        {place:6,kos:0,dmg:2399},
+        {place:5,kos:0,dmg:456},
+        {place:5,kos:0,dmg:1600}
+    ]
+    }
+]},
+
+{name:"MHCbr",main:"Cementoss",region:"Brasil",image:"https://i.pinimg.com/originals/d6/33/1d/d6331de238a58ef3fbb98373494f5d9d.png",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:5,kos:1,dmg:3517},
+        {place:4,kos:0,dmg:2007},
+        {place:6,kos:2,dmg:4448},
+        {place:5,kos:2,dmg:2558},
+        {place:5,kos:1,dmg:1700}
+    ]
+    }
+]},
+
+{name:"King mmk",main:"Shota Aizawa",region:"Brasil",image:"https://64.media.tumblr.com/257fea03b837cb3343fcfec6b817d18f/1c87838169495bfe-a8/s1280x1920/346b43d531d3d57c8555b035043b5d26b969ee57.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:6,kos:0,dmg:227},
+        {place:8,kos:0,dmg:560},
+        {place:7,kos:0,dmg:930},
+        {place:7,kos:0,dmg:2806},
+        {place:6,kos:0,dmg:953}
+    ]
+    }
+]},
+
+{name:"Apocrifa",main:"",region:"Brasil",image:"https://i.pinimg.com/564x/88/83/bd/8883bdd9611172334cb0e6d509dd5899.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:6,kos:0,dmg:159},
+        {place:8,kos:0,dmg:324},
+        {place:7,kos:0,dmg:683},
+        {place:7,kos:0,dmg:641},
+        {place:6,kos:0,dmg:205}
+    ]
+    }
+]},
+
+{name:"Ferrinha06",main:"",region:"Brasil",image:"https://i.pinimg.com/474x/00/29/5f/00295f7b5c72da520ac865f40145b3b5.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:6,kos:0,dmg:3822},
+        {place:8,kos:0,dmg:591},
+        {place:7,kos:0,dmg:1372},
+        {place:7,kos:0,dmg:1542},
+        {place:6,kos:0,dmg:545}
+    ]
+    }
+]},
+
+{name:"Dan",main:"",region:"Brasil",image:"https://i.pinimg.com/474x/18/71/4e/18714e277a3f493766762d7cf8594f9c.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:true,
+    matches:[
+        {place:2,kos:2,dmg:1748},
+        {place:1,kos:3,dmg:2692},
+        {place:3,kos:2,dmg:6035},
+        {place:2,kos:1,dmg:2322},
+        {place:1,kos:1,dmg:3189}
+    ]
+    }
+]},
+
+{name:"Hushhhh",main:"",region:"Brasil",image:"https://i.pinimg.com/736x/be/07/6d/be076d43463a938f68232831e00b3113.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:8,kos:0,dmg:1917},
+        {place:6,kos:0,dmg:1090}
+    ]
+    }
+]},
+
+{name:"Rufinha",main:"",region:"Brasil",image:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR6xmJO8o8nAPCTx0QgJKi8zfFtL16il542P2Ndux-GA&s=10",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:8,kos:0,dmg:1692},
+        {place:6,kos:0,dmg:2350},
+        {place:8,kos:0,dmg:1048}
+    ]
+    }
+]},
+
+{name:"Pequenomestre",main:"",region:"Brasil",image:"https://i.pinimg.com/474x/61/30/69/6130698c054f99096dc156e652300b41.jpg",tournaments:[
+    {
+      name:"Torneio #1",
+    fieldSize:24,
+    tournamentWin:false,
+    matches:[
+        {place:8,kos:0,dmg:839},
+        {place:6,kos:0,dmg:1181},
+        {place:8,kos:1,dmg:2410},
+        {place:8,kos:0,dmg:0},
+        {place:8,kos:0,dmg:0}
+    ]
+    }
+]}
+ ];
+let players = localMetadata.map(p => ({...p, tournaments:[]}));
+const rows=document.getElementById("rows");
+
+function initials(name){
+  const value = typeof name === "string" ? name.trim() : "";
+  return value.slice(0, 2).toUpperCase() || "?";
+}
+
+async function loadFromSupabase(){
+  const status = document.getElementById("dbStatus");
+  try {
+    if (!SUPABASE_URL.startsWith("https://") || !SUPABASE_PUBLISHABLE_KEY || SUPABASE_PUBLISHABLE_KEY.includes("COLE_AQUI")) {
+      status.textContent = "A configuração pública do Supabase está incompleta.";
+      setRowsMessage("Configure a URL e a chave publicável do Supabase neste arquivo.", "warning");
+      return;
+    }
+
+    const client = getSupabaseClient();
+    const [playersRes, tournamentsRes, participantsRes, matchesRes] = await Promise.all([
+      client.from("players").select("id,name,main,image,active").order("name").limit(500),
+      client.from("tournaments").select("id,name,tournament_date").limit(500),
+      client.from("tournament_players").select("tournament_id,player_id,tournament_win").limit(5000),
+      client.from("match_results").select("tournament_id,player_id,match_number,placement,kos,damage").order("match_number").limit(25000)
+    ]);
+
+    const firstError = playersRes.error || tournamentsRes.error || participantsRes.error || matchesRes.error;
+    if (firstError) throw firstError;
+
+    const playerRows = Array.isArray(playersRes.data) ? playersRes.data : [];
+    const tournamentRows = Array.isArray(tournamentsRes.data) ? tournamentsRes.data : [];
+    const participantRows = Array.isArray(participantsRes.data) ? participantsRes.data : [];
+    const matchRows = Array.isArray(matchesRes.data) ? matchesRes.data : [];
+
+    const metadataByName = new Map(localMetadata.map(p => [String(p.name).toLocaleLowerCase("pt-BR"), p]));
+    // Compatibilidade com um nome que mudou entre versões antigas do arquivo local.
+    const aliases = {"liliane lizdeluzx":"Lilione"};
+    const tournamentsById = new Map(tournamentRows.filter(t => t && t.id != null).map(t => [t.id, t]));
+    const matchesByKey = new Map();
+
+    for (const match of matchRows) {
+      if (!match || match.player_id == null || match.tournament_id == null) continue;
+      const key = `${match.player_id}:${match.tournament_id}`;
+      if (!matchesByKey.has(key)) matchesByKey.set(key, []);
+      matchesByKey.get(key).push({
+        place: Math.max(0, finiteNumber(match.placement)),
+        kos: Math.max(0, finiteNumber(match.kos)),
+        dmg: Math.max(0, finiteNumber(match.damage)),
+        matchNumber: Math.max(0, finiteNumber(match.match_number))
+      });
+    }
+
+    const participationsByPlayer = new Map();
+    for (const participant of participantRows) {
+      if (!participant || participant.player_id == null) continue;
+      const tournament = tournamentsById.get(participant.tournament_id);
+      if (!tournament) continue;
+      if (!participationsByPlayer.has(participant.player_id)) participationsByPlayer.set(participant.player_id, []);
+      participationsByPlayer.get(participant.player_id).push({
+        id: tournament.id,
+        name: typeof tournament.name === "string" ? tournament.name : "",
+        tournamentDate: tournament.tournament_date || "",
+        fieldSize: 24,
+        tournamentWin: participant.tournament_win === true || participant.tournament_win === 1,
+        matches: matchesByKey.get(`${participant.player_id}:${participant.tournament_id}`) || []
+      });
+    }
+
+    players = playerRows
+      .filter(player => player && player.active !== false && typeof player.name === "string" && player.name.trim())
+      .map(dbPlayer => {
+        const name = dbPlayer.name.trim().slice(0, 120);
+        const lookupName = aliases[name.toLocaleLowerCase("pt-BR")] || name;
+        const meta = metadataByName.get(lookupName.toLocaleLowerCase("pt-BR")) || {};
+        const rawMain = typeof dbPlayer.main === "string" && dbPlayer.main.trim() ? dbPlayer.main : (meta.main || "");
+        const rawImage = typeof dbPlayer.image === "string" ? dbPlayer.image : "";
+        return {
+          id: dbPlayer.id,
+          name,
+          main: normalizeMain(rawMain).slice(0, 100),
+          region: "Brasil",
+          image: safeImageUrl(rawImage) || safeImageUrl(meta.image) || "",
+          tournaments: participationsByPlayer.get(dbPlayer.id) || []
+        };
+      });
+
+    // Unifica os registros duplicados de Wes no ranking público, sem alterar o banco.
+    const isWesDuplicate = name => ["wes", "wes sz", "wes sz7"].includes(
+      String(name || "").trim().toLocaleLowerCase("pt-BR").replace(/\s+/g, " ")
+    );
+    const wesRecords = players.filter(player => isWesDuplicate(player.name));
+    if (wesRecords.length > 1) {
+      const primary = wesRecords.find(player => player.name.trim().toLocaleLowerCase("pt-BR") === "wes") || wesRecords[0];
+      const mergedTournaments = new Map();
+      for (const record of wesRecords) {
+        for (const tournament of record.tournaments) {
+          const key = tournament.id != null ? String(tournament.id) : `${tournament.name || ""}|${tournament.tournamentDate || ""}`;
+          if (!mergedTournaments.has(key)) {
+            mergedTournaments.set(key, {...tournament, matches:[...(tournament.matches || [])], tournamentWin:!!tournament.tournamentWin});
+          } else {
+            const existing = mergedTournaments.get(key);
+            existing.matches.push(...(tournament.matches || []));
+            existing.tournamentWin = existing.tournamentWin || !!tournament.tournamentWin;
+          }
+        }
+      }
+      primary.name = "Wes";
+      primary.tournaments = [...mergedTournaments.values()];
+      players = players.filter(player => !isWesDuplicate(player.name) || player === primary);
+    }
+
+    // Normalize variants into a single public-facing character label.
+    const mains = [...new Set(players.map(player => normalizeMain(player.main)).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, "pt-BR"));
+    const character = document.getElementById("character");
+    const selectedMain = character.value;
+    const defaultOption = makeElement("option", "", "Todos os personagens");
+    defaultOption.value = "";
+    character.replaceChildren(defaultOption);
+    for (const main of mains) {
+      const option = makeElement("option", "", main);
+      option.value = main;
+      character.append(option);
+    }
+    if (mains.includes(selectedMain)) character.value = selectedMain;
+
+    status.textContent = `Dados atuais: ${players.length} jogadores, ${tournamentRows.length} torneios.`;
+    render();
+  } catch (error) {
+    // Não expor detalhes técnicos nem dados de configuração na interface pública.
+    console.error("Falha ao carregar os dados públicos do ranking.");
+    status.textContent = "Não foi possível carregar os dados do ranking. Tente novamente mais tarde.";
+    setRowsMessage("Erro ao carregar os dados. Tente novamente mais tarde.", "error");
+  }
+}
+// Valida esquema, domínio, credenciais e porta antes de usar uma URL como imagem.
+// O navegador também aplica a allowlist correspondente por meio da CSP.
+function safeImageUrl(value){
+  if (typeof value !== "string" || value.length === 0 || value.length > 2048) return "";
+  try {
+    const url = new URL(value);
+    if (url.protocol !== "https:" || !url.hostname) return "";
+    if (url.username || url.password || (url.port && url.port !== "443")) return "";
+    return url.href;
+  } catch {
+    return "";
+  }
+}
+
+function getStats(player){
+
+if(!player.tournaments || player.tournaments.length===0){
+  return {
+    wins:0,
+    tournamentWins:0,
+    events:0,
+    matches:0,
+    kos:0,
+    avgPlace:0,
+    avgKOs:0,
+    avgDmg:0,
+    pr:0
+  };
+}
+
+let totalMatches=0;
+let totalPlace=0;
+let totalKOs=0;
+let totalDmg=0;
+let wins=0;
+let tournamentWins=0;
+
+player.tournaments.forEach(t=>{
+
+  // NOVO FORMATO: partidas individuais
+  if(Array.isArray(t.matches)){
+
+    t.matches.forEach(match=>{
+
+      const place=Number(match.place)||0;
+      const kos=Number(match.kos)||0;
+      const dmg=Number(match.dmg)||0;
+
+      // Ausência: se colocação, KOs e dano forem todos zero, não conta como partida.
+      if(place===0 && kos===0 && dmg===0) return;
+
+      totalMatches++;
+      totalPlace+=place;
+      totalKOs+=kos;
+      totalDmg+=dmg;
+
+      // 1º lugar = vitória individual
+      if(place===1){
+        wins++;
+      }
+
+    });
+
+  }
+
+  // FORMATO ANTIGO — mantém seus dados atuais funcionando
+  else{
+
+    const matches=Number(t.matches)||0;
+
+    totalMatches+=matches;
+    totalPlace+=(Number(t.avgPlace)||0)*matches;
+    totalKOs+=(Number(t.avgKOs)||0)*matches;
+    totalDmg+=(Number(t.avgDmg)||0)*matches;
+
+    wins+=Number(t.wins)||0;
+
+  }
+
+  if(t.tournamentWin){
+    tournamentWins++;
+  }
+
+});
+
+return {
+  wins:wins,
+  tournamentWins:tournamentWins,
+  events:player.tournaments.length,
+  matches:totalMatches,
+  kos:Math.round(totalKOs),
+
+  avgPlace:totalMatches
+    ? totalPlace/totalMatches
+    : 0,
+
+  avgKOs:totalMatches
+    ? totalKOs/totalMatches
+    : 0,
+
+  avgDmg:totalMatches
+    ? totalDmg/totalMatches
+    : 0,
+
+  pr:0
+};
+}
+
+function calculatePowerRanks(){
+  const stats=players.map(p=>({
+    player:p,
+    stats:getStats(p)
+  }));
+
+  // O PR não é normalizado pelo desempenho dos outros jogadores.
+  // KOs usa o limite teórico de 23 adversários numa partida de 24 jogadores.
+  const MAX_KOS_POR_PARTIDA=23;
+
+  stats.forEach(x=>{
+    const s=x.stats;
+
+    if(s.matches<=0){
+      s.pr=0;
+      return;
+    }
+
+    // Colocação: escala fixa de 1º a 8º lugar.
+    const placementScore=Math.max(0,Math.min(100,
+      100-((s.avgPlace-1)/7)*100
+    ));
+
+    // KOs usa o máximo teórico do jogo; dano permanece linear e sem teto.
+    // Cada 100 de dano médio equivale a 1 ponto de dano; acima de 10.000,
+    // a contribuição continua crescendo, sem ser truncada em 100.
+    const koScore=Math.max(0,Math.min(100,
+      (s.avgKOs/MAX_KOS_POR_PARTIDA)*100
+    ));
+    const dmgScore=Math.max(0,s.avgDmg/100);
+
+    // Taxas individuais para não premiar apenas quem jogou mais partidas/torneios.
+    const winScore=Math.max(0,Math.min(100,
+      (s.wins/s.matches)*100
+    ));
+    const tournamentWinScore=s.events>0
+      ? Math.max(0,Math.min(100,(s.tournamentWins/s.events)*100))
+      : 0;
+
+    s.pr=
+      tournamentWinScore*0.30+
+      koScore*0.25+
+      dmgScore*0.20+
+      placementScore*0.10+
+      winScore*0.15;
+  });
+
+  players.forEach(p=>{
+    const s=getStats(p);
+
+    p.wins=s.wins;
+    p.tournamentWins=s.tournamentWins;
+    p.events=s.events;
+    p.kos=s.kos;
+    p.avgPlace=s.avgPlace;
+    p.avgKOs=s.avgKOs;
+    p.avgDmg=s.avgDmg;
+
+    const calculated=stats.find(x=>x.player===p);
+    p.pr=calculated ? calculated.stats.pr : 0;
+  });
+}
+
+function updateLeaders(){
+  const leaders=[...players].sort((a,b)=>b.pr-a.pr).slice(0,3);
+  const cards=[...document.querySelectorAll(".pulse .card")];
+  cards.forEach((card,index)=>{
+    const player=leaders[index];
+    if(!player){card.querySelector(".playername").textContent="—";card.querySelector(".main").textContent="Sem dados";card.querySelector(".pr").textContent="—";return;}
+    card.querySelector(".label").textContent=`#${index+1} jogador`;
+    card.querySelector(".playername").textContent=player.name;
+    card.querySelector(".main").textContent=`${player.main||"Main não informado"} · Brasil`;
+    card.querySelector(".pr").textContent=player.pr.toFixed(1);
+  });
+}
+
+function render(){
+  calculatePowerRanks();
+  updateLeaders();
+
+  const query = String(document.getElementById("search").value || "").trim().toLocaleLowerCase("pt-BR");
+  const selectedMain = document.getElementById("character").value;
+  const sort = document.getElementById("sort").value;
+  const data = players.filter(player =>
+    `${player.name} ${player.main}`.toLocaleLowerCase("pt-BR").includes(query) &&
+    (!selectedMain || player.main === selectedMain)
+  );
+
+  data.sort((a, b) => {
+    if (sort === "wins") return b.wins - a.wins || a.name.localeCompare(b.name, "pt-BR");
+    if (sort === "kos") return b.kos - a.kos || a.name.localeCompare(b.name, "pt-BR");
+    return b.pr - a.pr || a.name.localeCompare(b.name, "pt-BR");
+  });
+
+  rows.replaceChildren();
+  if (data.length === 0) {
+    setRowsMessage("Nenhum jogador encontrado.");
+    return;
+  }
+
+  const profileIndex = new Map(players.map((player, index) => [player, index]));
+  for (const [index, player] of data.entries()) {
+    const row = makeElement("div", "row");
+    const rank = makeElement("div", `rank${index < 3 ? " top" : ""}`, String(index + 1).padStart(2, "0"));
+    const playerCell = makeElement("div", "p");
+    const avatar = makeElement("div", "avatar");
+    const imageUrl = safeImageUrl(player.image);
+    if (imageUrl) {
+      const image = makeElement("img");
+      image.src = imageUrl;
+      image.alt = player.name;
+      image.loading = "lazy";
+      image.decoding = "async";
+      image.referrerPolicy = "no-referrer";
+      image.addEventListener("error", () => image.replaceWith(makeElement("span", "empty-avatar")), {once:true});
+      avatar.append(image);
+    } else {
+      avatar.append(makeElement("span", "empty-avatar"));
+    }
+
+    const nameWrap = makeElement("div", "namewrap");
+    nameWrap.append(makeElement("div", "name", player.name));
+    nameWrap.append(makeElement("div", "sub", player.main));
+    const averageStats = makeElement("div", "avgstats");
+    const statsToShow = [
+      ["Colocação média", player.avgPlace.toFixed(1)],
+      ["KOs médios", player.avgKOs.toFixed(1)],
+      ["Average Dmg", player.avgDmg.toLocaleString("en-US")]
+    ];
+    for (const [label, value] of statsToShow) {
+      const stat = makeElement("span", "avgstat", `${label} `);
+      stat.append(makeElement("b", "", value));
+      averageStats.append(stat);
+    }
+    nameWrap.append(averageStats);
+    playerCell.append(avatar, nameWrap);
+
+    const main = makeElement("div", "region", player.main || "—");
+    const pr = makeElement("div", "stat gold", player.pr.toFixed(1));
+    const tournamentWins = makeElement("div", "stat", player.tournamentWins);
+    const actionCell = makeElement("div");
+    const viewButton = makeElement("button", "view", "PERFIL");
+    viewButton.type = "button";
+    viewButton.dataset.profileIndex = String(profileIndex.get(player));
+    actionCell.append(viewButton);
+    row.append(rank, playerCell, main, pr, tournamentWins, actionCell);
+    rows.append(row);
+  }
+}
+
+function openProfile(player){
+  if (!player) return;
+  const content = document.getElementById("modalContent");
+  const profileTop = makeElement("div", "profiletop");
+  const avatar = makeElement("div", "avatar");
+  const imageUrl = safeImageUrl(player.image);
+  if (imageUrl) {
+    const image = makeElement("img");
+    image.src = imageUrl;
+    image.alt = player.name;
+    image.loading = "lazy";
+    image.decoding = "async";
+    image.referrerPolicy = "no-referrer";
+    image.addEventListener("error", () => image.replaceWith(makeElement("span", "empty-avatar")), {once:true});
+    avatar.append(image);
+  } else {
+    avatar.textContent = initials(player.name);
+  }
+
+  const identity = makeElement("div");
+  identity.append(makeElement("div", "eyebrow", "PLAYER PROFILE · 🇧🇷"));
+  const heading = makeElement("h2", "", player.name);
+  heading.id = "profileTitle";
+  identity.append(heading, makeElement("div", "main", player.main));
+  profileTop.append(avatar, identity);
+
+  const profileGrid = makeElement("div", "profilegrid");
+  const values = [
+    [player.pr.toFixed(1), "Power Rank"],
+    [player.wins, "Vitórias em partidas"],
+    [player.tournamentWins, "Vitórias em torneios"],
+    [player.kos, "KOs"],
+    [player.events, "Eventos"],
+    [player.avgPlace.toFixed(1), "Colocação média"],
+    [player.avgKOs.toFixed(1), "KOs médios"],
+    [player.avgDmg.toLocaleString("en-US"), "Average Dmg"],
+    ["BR", "Região"]
+  ];
+  for (const [value, label] of values) {
+    const mini = makeElement("div", "mini");
+    mini.append(makeElement("b", "", value), makeElement("span", "", label));
+    profileGrid.append(mini);
+  }
+  content.replaceChildren(profileTop, profileGrid);
+  document.getElementById("modal").classList.add("show");
+}
+
+function closeModal(){
+  document.getElementById("modal").classList.remove("show");
+}
+document.getElementById("closeModalButton").addEventListener("click", closeModal);
+
+document.getElementById("search").addEventListener("input", render);
+document.getElementById("character").addEventListener("change", render);
+document.getElementById("sort").addEventListener("change", render);
+
+document.getElementById("modal").addEventListener("click", event => {
+  if (event.target === document.getElementById("modal")) closeModal();
+});
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeModal();
+});
+
+// A delegação de eventos mantém os nomes dos jogadores fora de atributos HTML.
+rows.addEventListener("click", event => {
+  const target = event.target instanceof Element ? event.target : null;
+  const button = target?.closest("button[data-profile-index]");
+  if (!button || !rows.contains(button)) return;
+  const index = Number(button.dataset.profileIndex);
+  if (!Number.isInteger(index) || index < 0 || index >= players.length) return;
+  openProfile(players[index]);
+});
+
+setRowsMessage("Carregando ranking…");
+loadFromSupabase();
+</script>
+</body>
+</html>
