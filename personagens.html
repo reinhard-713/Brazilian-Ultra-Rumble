@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-GAQXX4sr0W3RLR96nTkbr0v9L0dbzAlrBAMSE1YllPw=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js; script-src-attr 'none'; style-src 'sha256-pqSgG/W/dEnz2HSkFIdNdLg18PSYIms6ovuY+IYU0+0=' https://fonts.googleapis.com; style-src-attr 'none'; font-src https://fonts.gstatic.com; img-src 'self' https:; connect-src https://qznennnijjalbyzktcii.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; manifest-src 'none'; worker-src 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-A+m2zPPrc9H1Dp+GEYuFxROr0Ufq1MWym/P8Pkl/kXo=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js; script-src-attr 'none'; style-src 'sha256-61rTEwD4mcUCXJ7Kt6DuxObA+zzKqdUHTJCQMX69pFA=' https://fonts.googleapis.com; style-src-attr 'none'; font-src https://fonts.gstatic.com; img-src 'self' https:; connect-src https://qznennnijjalbyzktcii.supabase.co; object-src 'none'; base-uri 'none'; form-action 'none'; frame-src 'none'; manifest-src 'none'; worker-src 'none'; upgrade-insecure-requests">
 <title>Personagens | BR Ultra Rumble</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>:root{--bg:#080b10;--panel:#10151d;--panel2:#151b24;--line:#27303d;--muted:#8d99aa;--text:#f3f6fa;--accent:#ffcf33;--accent2:#ff7a18}
@@ -13,12 +13,37 @@ a{color:inherit;text-decoration:none}.nav{min-height:72px;border-bottom:1px soli
 .container{width:min(1180px,90%);margin:auto}.hero{padding:68px 0 35px;position:relative}.eyebrow{font-size:11px;color:var(--accent);font-weight:900;letter-spacing:2px;text-transform:uppercase}.spaced-eyebrow{margin-top:25px}.spaced-badge{margin-top:18px}.hero h1{font-family:Oswald,Impact,sans-serif;font-size:clamp(42px,7vw,76px);line-height:.98;margin:12px 0;max-width:900px;text-transform:uppercase}.hero p{max-width:730px;color:#a9b3c1;line-height:1.75;font-size:14px}.badge{display:inline-flex;gap:8px;align-items:center;border:1px solid #394352;background:#121822;padding:8px 12px;border-radius:5px;font-size:10px;font-weight:900;letter-spacing:.5px}.dot{width:7px;height:7px;border-radius:50%;background:#3de06f;box-shadow:0 0 12px #3de06f}
 .section-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:34px 0 16px}.section-title h2{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;font-size:32px;margin:4px 0 0}.section-title p{color:var(--muted);font-size:12px;margin:0;line-height:1.6}
 .status{color:#aeb8c6;font-size:12px;margin:12px 0 18px;min-height:18px}.status.error{color:#f0a5a5}.status.warning{color:#e7c56b}
-.character-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0 70px}.character-card{display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-height:180px;padding:22px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,#151c26,#0d1219);position:relative;overflow:hidden;transition:transform .16s,border-color .16s,background .16s}.character-card:hover{transform:translateY(-3px);border-color:#6a778a;background:linear-gradient(145deg,#1a2430,#0f151e)}.character-card-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.38;z-index:0!important;pointer-events:none;transition:opacity .16s,transform .25s}.character-card:hover .character-card-image{opacity:.52;transform:scale(1.035)}.character-card.has-image{background:#10151d}.character-card-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,16,.96) 0%,rgba(8,11,16,.78) 54%,rgba(8,11,16,.3) 100%);z-index:0!important;pointer-events:none}.character-card:after{content:attr(data-index);position:absolute;right:12px;bottom:-24px;font:900 100px Oswald,Impact,sans-serif;color:#fff;opacity:.035;pointer-events:none}.character-card>*{position:relative;z-index:1}.card-label{font-size:10px;font-weight:900;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}.character-name{font:700 clamp(24px,2.5vw,31px) Oswald,Impact,sans-serif;text-transform:uppercase;margin-top:9px;overflow-wrap:anywhere}.character-meta{display:flex;gap:10px;flex-wrap:wrap;color:#aeb8c6;font-size:11px;line-height:1.6}.character-meta strong{color:var(--accent);font-weight:800}.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:14px;border-top:1px solid #27303d;color:#dce3eb;font-size:10px;font-weight:900;letter-spacing:.8px}.card-bottom span:last-child{color:var(--accent)}
+.character-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:18px 0 70px}
+.character-card{display:flex;flex-direction:column;justify-content:space-between;gap:18px;height:245px;min-height:245px;max-height:245px;padding:20px;border:1px solid rgba(190,215,240,.19);border-radius:12px;background:linear-gradient(145deg,rgba(31,43,58,.52),rgba(11,17,27,.48));backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);box-shadow:inset 0 1px 0 rgba(255,255,255,.09),inset 0 -1px 0 rgba(255,255,255,.025),0 8px 24px rgba(0,0,0,.12);position:relative;overflow:hidden;isolation:isolate;transition:transform .18s,border-color .18s,box-shadow .18s}
+.character-card:hover{transform:translateY(-3px);border-color:rgba(200,225,248,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.13),0 12px 28px rgba(0,0,0,.22)}
+.character-card-image{position:absolute;inset:0;width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;opacity:.22;z-index:0!important;pointer-events:none;transition:opacity .18s,transform .3s;display:block}
+.character-card:hover .character-card-image{opacity:.3;transform:scale(1.025)}
+.character-card-shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,11,16,.82) 0%,rgba(8,11,16,.57) 56%,rgba(8,11,16,.28) 100%);z-index:0!important;pointer-events:none}
+.character-card:before{content:"";position:absolute;inset:1px;border-radius:11px;border-top:1px solid rgba(255,255,255,.075);pointer-events:none;z-index:3}
+.character-card:after{content:attr(data-index);position:absolute;right:10px;bottom:-25px;font:900 96px Oswald,Impact,sans-serif;color:#fff;opacity:.035;pointer-events:none}
+.character-card>.character-card-content,.character-card>.card-bottom{position:relative;z-index:4}
+.character-card>.character-portrait{position:absolute;z-index:2}
+.character-card>.character-card-image,.character-card>.character-card-shade{position:absolute}
+.character-card-content{position:relative;z-index:4;max-width:82%;min-width:0}
+.character-label{font-size:10px;font-weight:900;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase}
+.character-name{font:700 clamp(20px,2.15vw,29px) Oswald,Impact,sans-serif;text-transform:uppercase;margin-top:9px;white-space:nowrap;overflow-wrap:normal;word-break:normal;line-height:1.1;letter-spacing:-.25px;max-width:100%}
+.variant-tag{font:inherit;display:inline-block}
+.variant-technical{color:#bd8cff;text-shadow:0 0 13px rgba(189,140,255,.15)}
+.variant-assault{color:#ffd34f;text-shadow:0 0 13px rgba(255,211,79,.13)}
+.variant-striker{color:#ff6969;text-shadow:0 0 13px rgba(255,105,105,.13)}
+.variant-rapid{color:#83d9ff;text-shadow:0 0 13px rgba(131,217,255,.14)}
+.variant-support{color:#91edb1;text-shadow:0 0 13px rgba(145,237,177,.13)}
+.character-meta{display:flex;gap:8px;flex-wrap:wrap;color:#aeb8c6;font-size:11px;line-height:1.6;margin-top:10px}
+.character-meta strong{color:#f0f5fa;font-weight:800}
+.character-portrait{position:absolute;z-index:2;right:0;bottom:0;width:44%;height:100%;max-width:44%;max-height:none;object-fit:contain;object-position:right bottom;pointer-events:none;filter:drop-shadow(0 5px 12px rgba(0,0,0,.28));transition:transform .2s;opacity:.96}
+.character-card:hover .character-portrait{transform:translateY(-2px) scale(1.025)}
+.card-bottom{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:13px;border-top:1px solid rgba(205,222,240,.13);color:#dce3eb;font-size:10px;font-weight:900;letter-spacing:.8px}
+.card-bottom span:last-child{color:#cbd7e5}
 .top-three{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin:20px 0 30px}.top-card{padding:20px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,#141a23,#0e131a);min-width:0}.top-card:first-child{border-color:#6b5a24;background:linear-gradient(145deg,#211f18,#11151b)}.top-label{font-size:10px;font-weight:900;letter-spacing:1.2px;color:var(--muted);text-transform:uppercase}.top-name{font:700 clamp(22px,2.5vw,30px) Oswald,Impact,sans-serif;margin:10px 0 4px;overflow-wrap:anywhere}.top-value{font:700 37px Oswald,Impact,sans-serif;color:var(--accent);line-height:1.05}.top-sub{font-size:11px;color:#aeb8c6;margin-top:8px}
 .table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:#0d1219;margin-bottom:60px}.table{min-width:760px}.thead,.data-row{display:grid;grid-template-columns:58px minmax(180px,2fr) 95px 120px 110px 120px 110px;gap:8px;align-items:center}.thead{padding:13px 17px;background:#121821;color:#748093;font-size:9px;font-weight:900;letter-spacing:1px;text-transform:uppercase}.data-row{padding:13px 17px;border-top:1px solid #202833;transition:background .15s}.data-row:hover{background:#141b24}.rank{font:700 23px Oswald,Impact,sans-serif;color:#8793a4}.rank.top{color:var(--accent)}.player-cell{display:flex;align-items:center;gap:11px;min-width:0}.avatar{width:42px;height:42px;border-radius:5px;overflow:hidden;display:grid;place-items:center;background:linear-gradient(135deg,#313d4d,#171d26);font:800 14px Oswald,Impact,sans-serif;color:#dce3eb;flex-shrink:0}.avatar img{width:100%;height:100%;object-fit:cover;display:block}.player-name{font-size:13px;font-weight:800;overflow-wrap:anywhere}.player-sub{color:#8490a0;font-size:10px;margin-top:4px}.number{font:600 18px Oswald,Impact,sans-serif;white-space:nowrap}.gold{color:var(--accent)}.empty{grid-column:1/-1;padding:28px;color:#99a5b5;font-size:13px}.note{margin:16px 0 55px;padding:15px 17px;border:1px solid #2a3442;background:#0d1219;border-radius:6px;color:#9ca8b7;font-size:11px;line-height:1.7}.note strong{color:#e7c56b}
 footer{border-top:1px solid var(--line);padding:25px 0;color:#697586;font-size:11px;margin-top:auto}.footer-inner{width:min(1180px,90%);margin:auto}
 @media(max-width:900px){.character-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.top-three{grid-template-columns:1fr 1fr}.top-card:first-child{grid-column:1/-1}}
-@media(max-width:560px){.nav{align-items:flex-start;flex-direction:column;gap:10px}.navlinks{margin-left:0;gap:16px}.hero{padding-top:42px}.character-grid,.top-three{grid-template-columns:1fr}.top-card:first-child{grid-column:auto}.section-title{display:block}.section-title p{margin-top:7px}.character-card{min-height:160px}}</style>
+@media(max-width:560px){.nav{align-items:flex-start;flex-direction:column;gap:10px}.navlinks{margin-left:0;gap:16px}.hero{padding-top:42px}.character-grid,.top-three{grid-template-columns:1fr}.top-card:first-child{grid-column:auto}.section-title{display:block}.section-title p{margin-top:7px}.character-card{height:230px;min-height:230px;max-height:230px;padding:18px}.character-card-content{max-width:82%}.character-name{font-size:clamp(21px,6vw,26px);letter-spacing:-.35px}.character-portrait{width:40%;max-width:40%;max-height:190px}}}</style>
 </head>
 <body>
 <header class="nav"><a class="logo" href="index.html">BR <span>ULTRA</span> RUMBLE</a><nav class="navlinks"><a href="index.html#ranking">RANKINGS</a><a href="personagens.html" aria-current="page">PERSONAGENS</a><a href="index.html#about">SOBRE</a></nav></header>
@@ -28,7 +53,160 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:#697586;font-size:1
 </main>
 <footer><div class="footer-inner">BR Ultra Rumble · Projeto comunitário não afiliado à Bandai Namco ou à Byking.</div></footer>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" referrerpolicy="no-referrer"></script>
-<script>const SUPABASE_URL = "https://qznennnijjalbyzktcii.supabase.co";
+<script type="application/json" id="character-image-config">
+{
+  "characters": {
+    "AFO Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch016/GUI/Variation/T_ui_Thumb_13_1601_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch016/GUI/Costume/LL/T_ui_Thumb_4_16000006_LL.png"
+    },
+    "AFO Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch016/GUI/Variation/T_ui_Thumb_13_1600_L.png",
+      "PNG": "https://i.redd.it/xf4fkupyekec1.png"
+    },
+    "Young AFO": {
+      "Background": "https://preview.redd.it/yo-young-afo-is-like-really-strong-you-know-v0-wlvl0dy2ra1h1.png?auto=webp&s=32d4f5a2acca2dc918298e0e56736884bb1c07d6",
+      "PNG": "https://de.ultrarumble.com/assets/Character/Ch201/GUI/Costume/LL/T_ui_Thumb_4_201000100_LL.png"
+    },
+    "All Might Assault": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch012/GUI/FaceIcon/T_ui_Ch012_CharaImage.png",
+      "PNG": "https://static.wikia.nocookie.net/videogaming/images/8/8b/My_Hero_Ultra_Rumble_-_Character_Art_-_All_Might.png/revision/latest?cb=20260204225322"
+    },
+    "Bakugo Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch002/GUI/Variation/T_ui_Thumb_13_201_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch002/GUI/Costume/LL/T_ui_Thumb_4_2001100_LL.png"
+    },
+    "Bakugo Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch002/GUI/Variation/T_ui_Thumb_13_202_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch002/GUI/Costume/LL/T_ui_Thumb_4_2301100_LL.png"
+    },
+    "Cementoss Support": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch101/GUI/Variation/T_ui_Thumb_13_10100_LL.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch101/GUI/Costume/LL/T_ui_Thumb_4_101000000_LL.png"
+    },
+    "Dabi Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch017/GUI/Variation/T_ui_Thumb_13_1701_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch017/GUI/Costume/LL/T_ui_Thumb_4_17001103_LL.png"
+    },
+    "Deku Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch202/GUI/Variation/T_ui_Thumb_13_20200_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch202/GUI/Costume/LL/T_ui_Thumb_4_202611103_LL.png"
+    },
+    "Froppy Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch006/GUI/Variation/T_ui_Thumb_13_601_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch006/GUI/Costume/LL/T_ui_Thumb_4_6308104_LL.png"
+    },
+    "Gentle Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch108/GUI/Variation/T_ui_Thumb_13_10800_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch108/GUI/Costume/LL/T_ui_Thumb_4_108000001_LL.png"
+    },
+    "Hawks Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch043/GUI/Variation/T_ui_Thumb_13_4301_L.png",
+      "PNG": "https://es.ultrarumble.com/assets/Character/Ch043/GUI/Costume/LL/T_ui_Thumb_4_43100103_LL.png"
+    },
+    "Iida Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch005/GUI/Variation/T_ui_Thumb_13_500_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch005/GUI/Costume/LL/T_ui_Thumb_4_5300104_LL.png"
+    },
+    "Kendo Striker": {
+      "Background": "https://fr.ultrarumble.com/assets/Character/Ch046/GUI/Variation/T_ui_Ch046_Variation_4601.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch046/GUI/Costume/LL/T_ui_Thumb_4_46100106_LL.png"
+    },
+    "Kirishima Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch008/GUI/Variation/T_ui_Thumb_13_801_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch008/GUI/Costume/LL/T_ui_Thumb_4_8301100_LL.png"
+    },
+    "Mirio Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch024/GUI/FaceIcon/T_ui_Ch024_CharaImage.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch024/GUI/Costume/LL/T_ui_Thumb_4_24100100_LL.png"
+    },
+    "Mirio Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch024/GUI/Variation/T_ui_Thumb_13_2400_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch024/GUI/Costume/L/T_ui_Thumb_4_24308105_L.png"
+    },
+    "Mirko Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch111/GUI/Variation/T_ui_Thumb_13_11100_L.png",
+      "PNG": "https://es.ultrarumble.com/assets/Character/Ch111/GUI/Costume/LL/T_ui_Thumb_4_111000004_LL.png"
+    },
+    "Monoma Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch104/GUI/Variation/T_ui_Thumb_13_10400_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch104/GUI/Costume/LL/T_ui_Thumb_4_104000000_LL.png"
+    },
+    "Mr. Compress": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch038/GUI/Variation/T_ui_Thumb_13_3800_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch038/GUI/Costume/LL/T_ui_Thumb_4_38000001_LL.png"
+    },
+    "Mt. Lady": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch100/GUI/Variation/T_ui_Thumb_13_10000_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch100/GUI/Costume/LL/T_ui_Thumb_4_100100100_LL.png"
+    },
+    "Nejire Support": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch025/GUI/Variation/T_ui_Thumb_13_2500_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch025/GUI/Costume/LL/T_ui_Thumb_4_25303103_LL.png"
+    },
+    "Overhaul Assault": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch034/GUI/Variation/T_ui_Thumb_13_3400_L.png",
+      "PNG": "https://static.wikia.nocookie.net/videogaming/images/f/f8/My_Hero_Ultra_Rumble_-_Character_Art_-_Overhaul.png/revision/latest?cb=20260204205458"
+    },
+    "Present Mic Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch109/GUI/Variation/T_ui_Thumb_13_10901_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch109/GUI/Costume/LL/T_ui_Thumb_4_109000000_LL.png"
+    },
+    "Shigaraki Assault": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch015/GUI/Variation/T_ui_Thumb_13_1501_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch015/GUI/Costume/LL/T_ui_Thumb_4_15000100_LL.png"
+    },
+    "Shigaraki Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch015/GUI/Variation/T_ui_Thumb_13_1500_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch015/GUI/Costume/LL/T_ui_Thumb_4_15000000_LL.png"
+    },
+    "Shigaraki Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch015/GUI/Variation/T_ui_Thumb_13_1502_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch015/GUI/Costume/LL/T_ui_Thumb_4_15006106_LL.png"
+    },
+    "Shinso Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch105/GUI/Variation/T_ui_Thumb_13_10500_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch105/GUI/Costume/LL/T_ui_Thumb_4_105000000_LL.png"
+    },
+    "Todoroki Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch204/GUI/Variation/T_ui_Thumb_13_20400_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch204/GUI/Costume/LL/T_ui_Thumb_4_204607100_LL.png"
+    },
+    "Todoroki Striker": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch004/GUI/Variation/T_ui_Thumb_13_400_L.png",
+      "PNG": "https://fr.ultrarumble.com/assets/Character/Ch004/GUI/Costume/LL/T_ui_Thumb_4_4000002_LL.png"
+    },
+    "Todoroki Technical": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch004/GUI/Variation/T_ui_Thumb_13_401_L.png",
+      "PNG": "https://i.redd.it/137rnmkdekec1.png"
+    },
+    "Tokoyami Assault": {
+      "Background": "https://es.ultrarumble.com/assets/Character/Ch011/GUI/FaceIcon/T_ui_Ch011_CharaImage.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch011/GUI/Costume/LL/T_ui_Thumb_4_11000000_LL.png"
+    },
+    "Tokoyami": {
+      "Background": "cole-o-link-aqui",
+      "PNG": "cole-o-link-aqui"
+    },
+    "Uraraka Rapid": {
+      "Background": "https://ultrarumble.com/assets/Character/Ch003/GUI/Variation/T_ui_Thumb_13_300_L.png",
+      "PNG": "https://ultrarumble.com/assets/Character/Ch003/GUI/Costume/LL/T_ui_Thumb_4_3001100_LL.png"
+    }
+  }
+}
+</script>
+<script>const imageConfig = (() => {
+  try {
+    const parsed = JSON.parse(document.getElementById("character-image-config")?.textContent || "{}");
+    return parsed && typeof parsed === "object" && parsed.characters && typeof parsed.characters === "object"
+      ? parsed
+      : { characters: {} };
+  } catch (error) {
+    console.error("Configuração de imagens inválida; o site continuará sem imagens personalizadas.", error);
+    return { characters: {} };
+  }
+})();
+const SUPABASE_URL = "https://qznennnijjalbyzktcii.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_i3HDolPQnQaxUrHxxa2iuQ_7rmh9yYl";
 const client = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
   auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false }
@@ -58,25 +236,50 @@ function characterVariant(value) {
   return characterNames.get(original.toLocaleLowerCase("en-US")) || original;
 }
 
-// Adicione imagens de fundo aqui. Use caminhos relativos ao index.html, por exemplo:
-// "Mirio Rapid": "images/personagens/mirio-rapid.png"
-// Coloque os arquivos de imagem na pasta indicada e publique-os junto com o site.
-const characterCardImages = {
-  // "Mirio Rapid": "images/personagens/mirio-rapid.png",
-  // "Mirio Technical": "images/personagens/mirio-technical.png",
-  // "Todoroki Rapid": "images/personagens/todoroki-rapid.png",
-};
+// CONFIGURAÇÃO DAS IMAGENS — cada personagem tem Background e PNG no mesmo bloco.
+// Troque somente o texto entre aspas dos links. Se não quiser uma imagem, deixe "cole-o-link-aqui".
+// Preserve as aspas e a vírgula depois de cada bloco; o conteúdo fica separado do JavaScript do site.
+const characterCardImages = Object.fromEntries(
+  Object.entries(imageConfig.characters).map(([name, images]) => [name, images?.Background ?? ""])
+);
+const characterPortraitImages = Object.fromEntries(
+  Object.entries(imageConfig.characters).map(([name, images]) => [name, images?.PNG ?? ""])
+);
 
 function safeImageUrl(value) {
-  if (typeof value !== "string" || value.length === 0 || value.length > 2048) return "";
-  try { const url = new URL(value); if (url.protocol !== "https:" || !url.hostname || url.username || url.password || (url.port && url.port !== "443")) return ""; return url.href; }
-  catch { return ""; }
+  if (typeof value !== "string" || value.length === 0 || value.length > 4096) return "";
+  let candidate = value.trim();
+  // Aceita tanto a URL direta quanto links copiados em formato Markdown: [texto](URL).
+  const markdownLink = candidate.match(/^\[[^\]]*\]\((https?:\/\/[^\s)]+)\)$/i);
+  if (markdownLink) candidate = markdownLink[1];
+  // Alguns editores copiam o e comercial escapado como \&; a URL precisa de & literal.
+  candidate = candidate.replace(/\\&/g, "&");
+  try {
+    const url = new URL(candidate);
+    if (url.protocol !== "https:" || !url.hostname || url.username || url.password || (url.port && url.port !== "443")) return "";
+    return url.href;
+  } catch { return ""; }
 }
 function makeElement(tag, className = "", value = undefined) {
   const element = document.createElement(tag);
   if (className) element.className = className;
   if (value !== undefined) element.textContent = String(value);
   return element;
+}
+function imageUrlFor(map, characterName) {
+  const raw = map[characterName];
+  if (typeof raw !== "string" || !raw.trim() || ["cole seu link aqui", "cole-o-link-aqui"].includes(raw.trim().toLocaleLowerCase("pt-BR"))) return "";
+  return safeImageUrl(raw.trim());
+}
+function setColoredCharacterName(element, name) {
+  const match = String(name).match(/^(.*?)(?:\s+)(technical|assault|assalt|striker|rapid|support)$/i);
+  if (!match) { element.textContent = name; return; }
+  element.append(document.createTextNode(match[1] + " "));
+  const tag = makeElement("span", "variant-tag");
+  const variant = match[2].toLocaleLowerCase("en-US") === "assalt" ? "assault" : match[2].toLocaleLowerCase("en-US");
+  tag.classList.add("variant-" + variant);
+  tag.textContent = match[2];
+  element.append(tag);
 }
 function initials(value) { return String(value || "?").trim().slice(0, 2).toUpperCase() || "?"; }
 function fmtNumber(value, digits = 1) { return Number(value || 0).toLocaleString("pt-BR", {minimumFractionDigits: digits, maximumFractionDigits: digits}); }
@@ -160,18 +363,27 @@ async function initCharacters() {
       const card = makeElement("a", "character-card");
       card.href = `personagem.html?nome=${encodeURIComponent(character.name)}`;
       card.dataset.index = String(index + 1).padStart(2, "0");
-      const imagePath = characterCardImages[character.name];
-      if (typeof imagePath === "string" && imagePath.trim()) {
+      const backgroundUrl = imageUrlFor(characterCardImages, character.name);
+      if (backgroundUrl) {
         const image = makeElement("img", "character-card-image");
-        image.src = imagePath.trim(); image.alt = ""; image.setAttribute("aria-hidden", "true"); image.loading = "lazy"; image.decoding = "async"; image.referrerPolicy = "no-referrer";
+        image.src = backgroundUrl; image.alt = ""; image.setAttribute("aria-hidden", "true"); image.loading = "lazy"; image.decoding = "async"; image.referrerPolicy = "no-referrer";
         image.addEventListener("error", () => { image.remove(); card.classList.remove("has-image"); card.querySelector(".character-card-shade")?.remove(); }, {once:true});
         card.classList.add("has-image");
         const shade = makeElement("span", "character-card-shade"); shade.setAttribute("aria-hidden", "true");
         card.append(image, shade);
       }
-      const top = makeElement("div");
-      top.append(makeElement("div", "card-label", `PERSONAGEM #${String(index + 1).padStart(2, "0")}`));
-      top.append(makeElement("div", "character-name", character.name));
+      const portraitUrl = imageUrlFor(characterPortraitImages, character.name);
+      if (portraitUrl) {
+        const portrait = makeElement("img", "character-portrait");
+        portrait.src = portraitUrl; portrait.alt = ""; portrait.setAttribute("aria-hidden", "true"); portrait.loading = "lazy"; portrait.decoding = "async"; portrait.referrerPolicy = "no-referrer";
+        portrait.addEventListener("error", () => portrait.remove(), {once:true});
+        card.append(portrait);
+      }
+      const top = makeElement("div", "character-card-content");
+      top.append(makeElement("div", "character-label", `PERSONAGEM #${String(index + 1).padStart(2, "0")}`));
+      const nameElement = makeElement("div", "character-name");
+      setColoredCharacterName(nameElement, character.name);
+      top.append(nameElement);
       const meta = makeElement("div", "character-meta");
       const games = makeElement("span"); games.append(makeElement("strong", "", character.matches), document.createTextNode(" partidas registradas"));
       const users = makeElement("span"); users.append(makeElement("strong", "", character.players.size), document.createTextNode(character.players.size === 1 ? " jogador" : " jogadores"));
